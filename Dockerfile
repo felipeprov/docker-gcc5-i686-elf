@@ -1,6 +1,6 @@
 # Set up gcc5 for cross-compiling
 
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 
 
 # Copy build scripts
@@ -29,11 +29,7 @@ RUN apt-get update && \
     libgmp-dev libmpfr-dev libisl-dev libcloog-isl-dev libmpc-dev && \
   /build/get-src.sh && /build/extract-src.sh && \
   /build/build-binutils.sh && /build/build-gcc.sh && \
-  rm -rf /build && \
-  apt-get purge -y \
-    wget bzip2 \
-    make bison flex texinfo \
-    libgmp-dev libmpfr-dev libisl-dev libcloog-isl-dev libmpc-dev && \
+   rm -rf /build && \
   apt-get autoremove -y && \
   apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/apt/lists/*
